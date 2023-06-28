@@ -1,0 +1,24 @@
+.positionDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#mainDiv {
+  //   display: flex;
+  //   justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+#battleMain {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+#battleDiv {
+  display: flex;
+  justify-content: space-between;
+}
