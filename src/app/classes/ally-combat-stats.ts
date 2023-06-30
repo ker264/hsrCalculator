@@ -22,6 +22,9 @@ export class AllyCombatStats {
 
   breakEffect: number;
 
+  buffs: any = [];
+  debuffs: any = [];
+
   constructor(character: AllyBaseStats) {
     this.atk = { base: character.atk[character.lvl + character.ascention], flatIncrease: 0, percentageIncrease: 0 };
     this.hp = { base: character.hp[character.lvl + character.ascention], flatIncrease: 0, percentageIncrease: 0 };
