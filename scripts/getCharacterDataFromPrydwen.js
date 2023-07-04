@@ -17,6 +17,8 @@ function sFunc() {
     collectDataBtn.onclick = () => {
       let allData = document.querySelector("tbody").getElementsByTagName("tr");
 
+      let charDataParsed = JSON.parse(localStorage.getItem("charsData")) ?? [];
+
       for (let i = 0; i < allData.length; i++) {
         const statList = allData.item(i).getElementsByTagName("td");
 
@@ -27,12 +29,25 @@ function sFunc() {
         const SPEED = Number(statList.item(3).innerHTML.match("[0-9]+"));
         const ENERGY = Number(statList.item(4).innerHTML.match("[0-9]+"));
 
-        console.log(name, HP, ATK, DEF, SPEED, ENERGY);
+        if (charDataParsed.length <= i) {
+          let HP_arr = [HP];
+          let ATK_arr = [ATK];
+          let DEF_arr = [DEF];
+
+          charDataParsed.push({ name, SPEED, ENERGY, HP: HP_arr, ATK: ATK_arr, DEF: DEF_arr });
+        } else {
+          charDataParsed[i].HP.push(HP);
+          charDataParsed[i].ATK.push(ATK);
+          charDataParsed[i].DEF.push(DEF);
+        }
       }
+
+      localStorage.setItem("charsData", JSON.stringify(charDataParsed));
+      console.log(charDataParsed);
     };
 
     document.getElementsByClassName("stats-controls").item(0).append(collectDataBtn);
-  }, 300);
+  }, 4000);
 }
 
 (function () {

@@ -6,3 +6,4 @@ export let Seele = new AllyBaseStats(
 ){
 
 }
+*/
