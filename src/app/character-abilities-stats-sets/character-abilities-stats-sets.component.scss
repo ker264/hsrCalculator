@@ -1,0 +1,11 @@
+#charStatDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

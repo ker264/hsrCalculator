@@ -46,7 +46,24 @@ function sFunc() {
       console.log(charDataParsed);
     };
 
+    let downloadAllCollectedData = document.createElement("button");
+    downloadAllCollectedData.innerText = "dlYoinkedData!";
+    downloadAllCollectedData.classList.add("btn", "btn-secondary");
+    downloadAllCollectedData.onclick = () => {
+      let charDataParsed = JSON.parse(localStorage.getItem("charsData")) ?? [];
+
+      let dlLink = document.createElement("a");
+      dlLink.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(charDataParsed));
+      dlLink.download = "charsData.json";
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+
+      console.log(charDataParsed);
+    };
+
     document.getElementsByClassName("stats-controls").item(0).append(collectDataBtn);
+    document.getElementsByClassName("stats-controls").item(0).append(downloadAllCollectedData);
   }, 4000);
 }
 
