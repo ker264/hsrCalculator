@@ -1,0 +1,8 @@
+<div class="oneHeroInTeam" *ngIf="hero; else addHero">
+  {{ hero.name }}
+</div>
+<ng-template #addHero>
+  <div class="oneHeroInTeam">
+    <button class="btn btn-outline-primary" (click)="chooseHero()">Добавить</button>
+  </div>
+</ng-template>

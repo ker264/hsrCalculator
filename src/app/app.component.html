@@ -3,9 +3,15 @@
   <div class="positionDiv" id="battleMain">
     <div class="positionDiv" id="battleDiv">
       <div class="positionDiv" id="battleLog">Лог</div>
-      <div class="positionDiv" id="battleBattle">BattleBattle</div>
+      <div class="positionDiv" id="battleBattle">
+        <div>enemy</div>
+        <app-ally-team></app-ally-team>
+      </div>
       <div class="positionDiv" id="enemyStat">enemyStat</div>
     </div>
-    <app-character-abilities-stats-sets class="positionDiv" id="charStat">Характеристики персонажа</app-character-abilities-stats-sets>
+    <app-hero-picker *ngIf="pickOrShow == 'pick'; else showStat"></app-hero-picker>
+    <ng-template #showStat>
+      <app-character-abilities-stats-sets class="positionDiv" id="charStat">Характеристики персонажа</app-character-abilities-stats-sets>
+    </ng-template>
   </div>
 </div>

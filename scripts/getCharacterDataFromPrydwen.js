@@ -19,8 +19,12 @@ function sFunc() {
 
       let charDataParsed = JSON.parse(localStorage.getItem("charsData")) ?? [];
 
+      let forDl = [];
+
       for (let i = 0; i < allData.length; i++) {
         const statList = allData.item(i).getElementsByTagName("td");
+
+        const imgLink = allData.item(i).querySelector("th").querySelector("picture img").src;
 
         const name = allData.item(i).querySelector("th").getElementsByTagName("span").item(1).innerHTML;
         const HP = Number(statList.item(0).innerHTML.match("[0-9]+"));
@@ -28,6 +32,8 @@ function sFunc() {
         const DEF = Number(statList.item(2).innerHTML.match("[0-9]+"));
         const SPEED = Number(statList.item(3).innerHTML.match("[0-9]+"));
         const ENERGY = Number(statList.item(4).innerHTML.match("[0-9]+"));
+
+        forDl.push({ imgLink, name });
 
         if (charDataParsed.length <= i) {
           let HP_arr = [HP];
@@ -41,6 +47,19 @@ function sFunc() {
           charDataParsed[i].DEF.push(DEF);
         }
       }
+
+      let i = 0;
+      let link = document.createElement("a");
+      let dlPictures = setInterval(() => {
+        if (i >= forDl.length) {
+          clearInterval(dlPictures);
+          return;
+        }
+        link.href = forDl[i].imgLink;
+        link.download = `${forDl[i].name}.png`;
+        link.click();
+        i++;
+      }, 100);
 
       localStorage.setItem("charsData", JSON.stringify(charDataParsed));
       console.log(charDataParsed);
