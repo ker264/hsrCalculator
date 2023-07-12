@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { allBaseStats } from "src/app/charactersData/allCharsBaseStats";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { AllyBaseStats } from "src/app/classesAndInterfaces/ally-base-stats";
+import { ControlServiceService } from "src/app/services/control-service.service";
 
 @Component({
   selector: "app-one-ally-in-team",
@@ -8,14 +8,20 @@ import { AllyBaseStats } from "src/app/classesAndInterfaces/ally-base-stats";
   styleUrls: ["./one-ally-in-team.component.scss"],
 })
 export class OneAllyInTeamComponent {
-  hero?: AllyBaseStats;
+  @Output() pickCharacterForPosition = new EventEmitter<void>();
+  @Output() showStatsForPosition = new EventEmitter<void>();
+
+  @Input() hero?: AllyBaseStats;
+
+  chooseCharacter = true;
+
+  constructor(private controlManager: ControlServiceService) {}
 
   chooseHero() {
-    let tmp = allBaseStats.find((item) => (item.name = "Seele"));
-    if (!tmp) {
-      console.log("Ацаца");
-      return;
-    }
-    this.hero = new AllyBaseStats(tmp.name, tmp.ATK, tmp.HP, tmp.DEF, tmp.SPEED, tmp.ENERGY);
+    this.pickCharacterForPosition.emit();
+  }
+
+  showStats() {
+    this.showStatsForPosition.emit();
   }
 }

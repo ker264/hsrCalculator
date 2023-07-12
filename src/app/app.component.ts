@@ -10,7 +10,7 @@ import { ControlServiceService } from "./services/control-service.service";
 export class AppComponent {
   title = "hsr-calculator";
 
-  pickOrShow: string = "pick";
+  pickOrShow: string = "nothing";
 
   subs: Subscription;
 

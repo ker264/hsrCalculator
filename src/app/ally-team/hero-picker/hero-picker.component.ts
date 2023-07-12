@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { allBaseStats } from "../charactersData/allCharsBaseStats";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { allBaseStats } from "src/app/charactersData/allCharsBaseStats";
 
 @Component({
   selector: "app-hero-picker",
@@ -8,8 +8,13 @@ import { allBaseStats } from "../charactersData/allCharsBaseStats";
 })
 export class HeroPickerComponent {
   charsName: string[] = [];
+  @Output() chooseCharacterName = new EventEmitter<string>();
 
   constructor() {
     allBaseStats.forEach((oneChar) => this.charsName.push(oneChar.name));
+  }
+
+  chooseMe(name: string) {
+    this.chooseCharacterName.emit(name);
   }
 }

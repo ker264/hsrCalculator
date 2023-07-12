@@ -1,8 +1,14 @@
 <div class="oneHeroInTeam" *ngIf="hero; else addHero">
-  {{ hero.name }}
+  <button
+    class="btn btn-outline-primary"
+    style="background-image: url('assets/char-icons/{{ hero.name }}.png'); background-size: cover; background-position: center;"
+    (click)="showStats()"
+  ></button>
 </div>
-<ng-template #addHero>
-  <div class="oneHeroInTeam">
-    <button class="btn btn-outline-primary" (click)="chooseHero()">Добавить</button>
-  </div>
-</ng-template>
+<div>
+  <ng-template #addHero>
+    <div class="oneHeroInTeam">
+      <button class="btn btn-outline-primary" (click)="chooseHero()">Добавить</button>
+    </div>
+  </ng-template>
+</div>

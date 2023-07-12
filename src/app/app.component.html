@@ -9,9 +9,5 @@
       </div>
       <div class="positionDiv" id="enemyStat">enemyStat</div>
     </div>
-    <app-hero-picker *ngIf="pickOrShow == 'pick'; else showStat"></app-hero-picker>
-    <ng-template #showStat>
-      <app-character-abilities-stats-sets class="positionDiv" id="charStat">Характеристики персонажа</app-character-abilities-stats-sets>
-    </ng-template>
   </div>
 </div>

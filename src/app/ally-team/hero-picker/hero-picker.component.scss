@@ -1,0 +1,10 @@
+.grid-container {
+  display: grid;
+  padding: 10px 2%;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-gap: 10px;
+}
+
+img:hover {
+  cursor: pointer;
+}

@@ -8,7 +8,7 @@ export class ControlServiceService {
   private pickOrShowControl = new Subject<string>();
   public pickOrShowStat$ = this.pickOrShowControl.asObservable();
 
-  public pickCharacter() {
+  public pickCharacter(position: number) {
     this.pickOrShowControl.next("pick");
   }
 

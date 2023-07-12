@@ -1,6 +1,8 @@
-<div>
-  <app-one-ally-in-team></app-one-ally-in-team>
-  <app-one-ally-in-team></app-one-ally-in-team>
-  <app-one-ally-in-team></app-one-ally-in-team>
-  <app-one-ally-in-team></app-one-ally-in-team>
+<div class="heroBtnDiv">
+  <app-one-ally-in-team [hero]="team[0]" (pickCharacterForPosition)="chooseCharacter(0)" (showStatsForPosition)="showStats(0)"></app-one-ally-in-team>
+  <app-one-ally-in-team [hero]="team[1]" (pickCharacterForPosition)="chooseCharacter(1)" (showStatsForPosition)="showStats(1)"></app-one-ally-in-team>
+  <app-one-ally-in-team [hero]="team[2]" (pickCharacterForPosition)="chooseCharacter(2)" (showStatsForPosition)="showStats(2)"></app-one-ally-in-team>
+  <app-one-ally-in-team [hero]="team[3]" (pickCharacterForPosition)="chooseCharacter(3)" (showStatsForPosition)="showStats(3)"></app-one-ally-in-team>
 </div>
+<app-hero-picker *ngIf="pickForPosition != undefined" (chooseCharacterName)="setCharacterForCurrentPosition($event)"></app-hero-picker>
+<app-character-abilities-stats-sets [charBaseStats]="team[showStatsForPosition]!" *ngIf="showStatsForPosition != undefined"></app-character-abilities-stats-sets>

@@ -3,7 +3,6 @@ import { ArtifactSet } from "./artifact-set";
 export class AllyBaseStats {
   name: string = "";
   lvl: number = possibleLevel.lvl_1_20;
-  ascention: number = 0;
 
   atk: number[];
   hp: number[];
@@ -13,13 +12,13 @@ export class AllyBaseStats {
   energyMax: number;
 
   /**
-   * 
-   * @param name 
-   * @param atk 
-   * @param hp 
-   * @param def 
-   * @param speed 
-   * @param energyMax 
+   *
+   * @param name
+   * @param atk
+   * @param hp
+   * @param def
+   * @param speed
+   * @param energyMax
    */
   constructor(name: string, atk: number[], hp: number[], def: number[], speed: number, energyMax: number) {
     this.name = name;
