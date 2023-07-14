@@ -1,15 +1,28 @@
+import { allBaseStats, possibleClass, rarity } from "../dataBase/allCharsBaseStats";
 import { ArtifactSet } from "./artifact-set";
 
 export class AllyBaseStats {
   name: string = "";
   lvl: number = possibleLevel.lvl_1_20;
 
-  atk: number[];
-  hp: number[];
-  def: number[];
+  atk: number[] = [];
+  hp: number[] = [];
+  def: number[] = [];
 
-  speed: number;
-  energyMax: number;
+  speed: number = 0;
+  energyMax: number = 0;
+
+  critRate = 0.05;
+  critDmg = 0.5;
+  dmgBoost = 0;
+
+  breakEffect = 0;
+  effectHitRate = 0;
+  effectRes = 0;
+  outgoingHealing = 0;
+
+  rarity = rarity.gold;
+  class = possibleClass.preservation;
 
   /**
    *
@@ -20,13 +33,21 @@ export class AllyBaseStats {
    * @param speed
    * @param energyMax
    */
-  constructor(name: string, atk: number[], hp: number[], def: number[], speed: number, energyMax: number) {
-    this.name = name;
-    this.atk = atk;
-    this.hp = hp;
-    this.def = def;
-    this.speed = speed;
-    this.energyMax = energyMax;
+  constructor(characterName: string) {
+    let tmp = allBaseStats.find((item) => item.name == characterName);
+    if (!tmp) {
+      return;
+    }
+
+    this.name = tmp.name;
+    this.atk = tmp.ATK;
+    this.hp = tmp.HP;
+    this.def = tmp.DEF;
+    this.speed = tmp.SPEED;
+    this.energyMax = tmp.ENERGY;
+
+    this.rarity = tmp.rarity;
+    this.class = tmp.class;
   }
 
   artifactSet: ArtifactSet[] = [];

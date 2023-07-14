@@ -7,10 +7,12 @@ import { OneAllyInTeamComponent } from "./ally-team/one-ally-in-team/one-ally-in
 import { HeroPickerComponent } from "./ally-team/hero-picker/hero-picker.component";
 import { CharacterAbilitiesStatsSetsComponent } from "./ally-team/character-abilities-stats-sets/character-abilities-stats-sets.component";
 import { FormsModule } from "@angular/forms";
+import { LcForPathPipe } from "../pipes/lc-for-path.pipe";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
-  declarations: [AppComponent, CharacterAbilitiesStatsSetsComponent, AllyTeamComponent, OneAllyInTeamComponent, HeroPickerComponent],
-  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent, CharacterAbilitiesStatsSetsComponent, AllyTeamComponent, OneAllyInTeamComponent, HeroPickerComponent, LcForPathPipe],
+  imports: [BrowserModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -4,6 +4,18 @@
   flex-direction: column;
 }
 
+#weaponAndRelicsDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#allStatsDiv {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 .stat {
   display: flex;
   flex-direction: row;

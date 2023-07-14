@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { AllyBaseStats, possibleLevel } from "src/app/classesAndInterfaces/ally-base-stats";
 import { CharBaseStats } from "src/app/classesAndInterfaces/char-base-stats";
+import { lcAllData } from "src/app/dataBase/lightconesDataAllPrydwen";
 
 @Component({
   selector: "app-character-abilities-stats-sets",
@@ -10,8 +11,7 @@ import { CharBaseStats } from "src/app/classesAndInterfaces/char-base-stats";
 export class CharacterAbilitiesStatsSetsComponent {
   @Input() charBaseStats!: AllyBaseStats;
 
-  // name: string = this.charBaseStats.name;
-  lvlIndex: number = possibleLevel.lvl_1_20;
+  lcAllData = lcAllData;
 
   // atk: number;
   // hp: number;

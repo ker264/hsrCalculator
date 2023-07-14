@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { allBaseStats } from "src/app/charactersData/allCharsBaseStats";
+import { allBaseStats } from "src/app/dataBase/allCharsBaseStats";
 
 @Component({
   selector: "app-hero-picker",

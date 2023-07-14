@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { allBaseStats } from "../charactersData/allCharsBaseStats";
 import { AllyBaseStats } from "../classesAndInterfaces/ally-base-stats";
 import { ControlServiceService } from "../services/control-service.service";
 
@@ -19,11 +18,8 @@ export class AllyTeamComponent {
   }
 
   setCharacterForCurrentPosition(name: string) {
-    let tmp = allBaseStats.find((item) => item.name == name);
-    if (!tmp) return;
-
     if (this.pickForPosition == undefined) return;
-    this.team[this.pickForPosition] = new AllyBaseStats(tmp.name, tmp.ATK, tmp.HP, tmp.DEF, tmp.SPEED, tmp.ENERGY);
+    this.team[this.pickForPosition] = new AllyBaseStats(name);
 
     this.pickForPosition = undefined;
   }

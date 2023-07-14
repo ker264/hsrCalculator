@@ -1,42 +1,61 @@
-<div id="charStatDiv">
-  <div>
-    <p>{{ charBaseStats.name }}</p>
-    <label for="levelRange" class="form-label">lvl</label>
-    <input type="range" class="form-range" min="0" max="13" step="1" id="levelRange" [(ngModel)]="charBaseStats.lvl" />
+<div id="allStatsDiv">
+  <div id="charStatDiv">
+    <div>
+      <p>{{ charBaseStats.name }}</p>
+      <label for="levelRange" class="form-label">lvl</label>
+      <input type="range" class="form-range" min="0" max="13" step="1" id="levelRange" [(ngModel)]="charBaseStats.lvl" />
+    </div>
+    <div>
+      <div class="stat">
+        <div>ATK</div>
+        <div>{{ charBaseStats.atk[charBaseStats.lvl] }}</div>
+      </div>
+      <div class="stat">
+        <div>HP</div>
+        <div>{{ charBaseStats.hp[charBaseStats.lvl] }}</div>
+      </div>
+      <div class="stat">
+        <div>DEF</div>
+        <div>{{ charBaseStats.def[charBaseStats.lvl] }}</div>
+      </div>
+      <div class="stat">
+        <div>SPD</div>
+        <div>{{ charBaseStats.speed }}</div>
+      </div>
+      <div class="stat">
+        <div>critRate</div>
+        <div>{{ charBaseStats.critRate }}</div>
+      </div>
+      <div class="stat">
+        <div>critDmg</div>
+        <div>{{ charBaseStats.critDmg }}</div>
+      </div>
+      <div class="stat">
+        <div>effectHitRate</div>
+        <div>{{ charBaseStats.effectHitRate }}</div>
+      </div>
+      <div class="stat">
+        <div>breakEffect</div>
+        <div>{{ charBaseStats.breakEffect }}</div>
+      </div>
+    </div>
   </div>
-  <div>
-    <div class="stat">
-      <div>ATK</div>
-      <div>{{ charBaseStats.atk[charBaseStats.lvl] }}</div>
+  <div id="weaponAndRelicsDiv">
+    <div id="lcDiv">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownLc" ngbDropdownToggle>Weapon</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownLc">
+          <button ngbDropdownItem>
+            <div class="oneLcDiv" *ngFor="let oneLC of lcAllData | lcForPath : charBaseStats.class">
+              <img src="{{ oneLC.img }}" width="48px" />
+              {{ oneLC.name }}
+            </div>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="stat">
-      <div>HP</div>
-      <div>{{ charBaseStats.hp[charBaseStats.lvl] }}</div>
-    </div>
-    <div class="stat">
-      <div>DEF</div>
-      <div>{{ charBaseStats.def[charBaseStats.lvl] }}</div>
-    </div>
-    <div class="stat">
-      <div>SPD</div>
-      <div>{{ charBaseStats.speed }}</div>
-    </div>
-    <!-- <div class="stat">
-      <div>critRate</div>
-      <div>{{ critRate }}</div>
-    </div>
-    <div class="stat">
-      <div>critDmg</div>
-      <div>{{ critDmg }}</div>
-    </div>
-    <div class="stat">
-      <div>effectHitRate</div>
-      <div>{{ effectHitRate }}</div>
-    </div>
-    <div class="stat">
-      <div>breakEffect</div>
-      <div>{{ breakEffect }}</div>
-    </div> -->
+    <div>Relics</div>
+    <div>stats</div>
   </div>
+  <div></div>
 </div>
-<div></div>

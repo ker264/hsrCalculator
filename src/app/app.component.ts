@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
+
 import { ControlServiceService } from "./services/control-service.service";
 
 @Component({
@@ -17,4 +18,6 @@ export class AppComponent {
   constructor(private controlManager: ControlServiceService) {
     this.subs = controlManager.pickOrShowStat$.subscribe((value) => (this.pickOrShow = value));
   }
+
+  doThing() {}
 }
