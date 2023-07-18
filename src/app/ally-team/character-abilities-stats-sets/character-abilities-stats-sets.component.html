@@ -8,7 +8,7 @@
     <div>
       <div class="stat">
         <div>ATK</div>
-        <div>{{ charBaseStats.atk[charBaseStats.lvl] }}</div>
+        <div>{{ charBaseStats.atk[charBaseStats.lvl] + (this.charBaseStats.lightCone ? this.charBaseStats.lightCone.atk : 0) }}</div>
       </div>
       <div class="stat">
         <div>HP</div>
@@ -43,10 +43,18 @@
   <div id="weaponAndRelicsDiv">
     <div id="lcDiv">
       <div ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-outline-primary" id="dropdownLc" ngbDropdownToggle>Weapon</button>
+        <div id="weaponBtnDiv">
+          <button type="button" class="btn btn-outline-primary" id="dropdownLc" ngbDropdownToggle>
+            <div *ngIf="charBaseStats.lightCone"><img src="{{ charBaseStats.lightCone.img }}" width="48px" /> {{ charBaseStats.lightCone.name }}</div>
+            <div *ngIf="!charBaseStats.lightCone">Weapon</div>
+          </button>
+          <button type="button" class="btn btn-outline-primary" *ngIf="charBaseStats.lightCone" (click)="switchShowWeapon()">
+            <img src="assets/settings_64.png" width="32px" />
+          </button>
+        </div>
         <div ngbDropdownMenu aria-labelledby="dropdownLc">
-          <button ngbDropdownItem>
-            <div class="oneLcDiv" *ngFor="let oneLC of lcAllData | lcForPath : charBaseStats.class">
+          <button ngbDropdownItem *ngFor="let oneLC of lcAllData | lcForPath : charBaseStats.class" (click)="chooseWeapon(oneLC)">
+            <div class="oneLcDiv">
               <img src="{{ oneLC.img }}" width="48px" />
               {{ oneLC.name }}
             </div>
@@ -55,7 +63,13 @@
       </div>
     </div>
     <div>Relics</div>
-    <div>stats</div>
+    <div *ngIf="showWeaponStats && charBaseStats.lightCone">
+      <p>{{ this.charBaseStats.lightCone.path }}<--> {{ this.charBaseStats.lightCone.rarity }}</p>
+      <p>atk: {{ this.charBaseStats.lightCone.atk }}</p>
+      <p>def: {{ this.charBaseStats.lightCone.def }}</p>
+      <p>hp: {{ this.charBaseStats.lightCone.hp }}</p>
+      <p>{{ this.charBaseStats.lightCone.description }}</p>
+    </div>
   </div>
   <div></div>
 </div>

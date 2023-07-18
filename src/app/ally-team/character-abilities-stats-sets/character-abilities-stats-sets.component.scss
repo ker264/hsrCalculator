@@ -21,3 +21,19 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.d-inline-block {
+  width: 400px;
+}
+
+#dropdownLc {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#weaponBtnDiv {
+  display: flex;
+  justify-content: center;
+}

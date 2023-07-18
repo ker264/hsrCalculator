@@ -1,4 +1,5 @@
 import { allBaseStats, possibleClass, rarity } from "../dataBase/allCharsBaseStats";
+import { oneLcInterface } from "../dataBase/lightconesDataAllPrydwen";
 import { ArtifactSet } from "./artifact-set";
 
 export class AllyBaseStats {
@@ -23,6 +24,8 @@ export class AllyBaseStats {
 
   rarity = rarity.gold;
   class = possibleClass.preservation;
+
+  lightCone?: oneLcInterface;
 
   /**
    *
