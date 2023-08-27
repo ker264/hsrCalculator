@@ -6,14 +6,16 @@
 
 #weaponAndRelicsDiv {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+  width: 450px;
 }
 
 #allStatsDiv {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   flex-direction: row;
+  gap: 15px;
 }
 
 .stat {
@@ -36,4 +38,31 @@
 #weaponBtnDiv {
   display: flex;
   justify-content: center;
+}
+
+#relicPartPicker {
+  button.relic {
+    background-color: black;
+  }
+
+  display: flex;
+  padding: 5px 0 5px 0;
+  align-items: center;
+
+  .setManager {
+    height: 36px;
+  }
+}
+
+.relicsSavedSets {
+  li {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+  }
+}
+
+svg {
+  cursor: pointer;
 }

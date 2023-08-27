@@ -2,12 +2,12 @@
   <div class="positionDiv" id="menu">Меню</div>
   <div class="positionDiv" id="battleMain">
     <div class="positionDiv" id="battleDiv">
-      <div class="positionDiv" id="battleLog">Лог</div>
+      <app-dmg-log class="positionDiv" id="battleLog"></app-dmg-log>
       <div class="positionDiv" id="battleBattle">
         <div><button class="btn btn-outline-secondary" (click)="doThing()">enemy</button></div>
-        <app-ally-team></app-ally-team>
       </div>
       <div class="positionDiv" id="enemyStat">enemyStat</div>
     </div>
   </div>
+  <app-ally-team></app-ally-team>
 </div>

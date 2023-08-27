@@ -1,0 +1,38 @@
+<div id="tableDiv">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">setName</th>
+        <th scope="col">nonCrit</th>
+        <th scope="col">Crit</th>
+        <th scope="col">avgCrit</th>
+        <th scope="col">atk</th>
+        <th scope="col">critRate</th>
+        <th scope="col">critDmg</th>
+        <th scope="col">SPD</th>
+        <th>
+          <button class="btn btn-outline" (click)="clearLog()"><i class="bi bi-recycle"></i></button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of log; index as i">
+        <th>{{ i }}</th>
+        <th>{{ item.charName }}</th>
+        <th>{{ item.setName }}</th>
+        <th>{{ item.nonCrit }}</th>
+        <th>{{ item.crit }}</th>
+        <th>{{ item.averageCrit }}</th>
+        <th>{{ item.atk }}</th>
+        <th>{{ item.critRate }}</th>
+        <th>{{ item.critDmg }}</th>
+        <th>{{ item.spd }}</th>
+        <th>
+          <button class="btn btn-outline" (click)="clearMsg(i)"><i class="bi bi-recycle"></i></button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>

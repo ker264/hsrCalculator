@@ -1,0 +1,96 @@
+<div id="mainCostil">
+  <div class="input-group mb-3 dropstart">
+    <span class="input-group-text" id="basic-addon1">Имя симуляции</span>
+    <input type="text" class="form-control" placeholder="Введите имя" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="name" />
+    <button type="button" class="btn btn-outline-secondary" (click)="saveCrutch()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+        <path
+          d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"
+        ></path>
+      </svg>
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false" (click)="lookForCharCrutches()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-menu-up" viewBox="0 0 16 16">
+        <path
+          d="M7.646 15.854a.5.5 0 0 0 .708 0L10.207 14H14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.793l1.853 1.854zM1 9V6h14v3H1zm14 1v2a1 1 0 0 1-1 1h-3.793a1 1 0 0 0-.707.293l-1.5 1.5-1.5-1.5A1 1 0 0 0 5.793 13H2a1 1 0 0 1-1-1v-2h14zm0-5H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2zM2 11.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 0-1h-8a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0-.5.5z"
+        ></path>
+      </svg>
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let item of charSavedCrutches; index as i">
+        <div>
+          <a class="dropdown-item" href="#" (click)="chooseSavedCrutch(i)">{{ item.name }}</a>
+        </div>
+        <div (click)="deleteItemFromSavedCrutches($event, i)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            <path
+              d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+            ></path>
+          </svg>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="baseDmg">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">ATK</span>
+      <input type="number" class="form-control" placeholder="atk scale" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="atkScale" />
+      <span class="input-group-text" id="basic-addon1">HP</span>
+      <input type="number" class="form-control" placeholder="hp scale" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="hpScale" />
+      <span class="input-group-text" id="basic-addon1">DEF</span>
+      <input type="number" class="form-control" placeholder="def scale" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="defScale" />
+      <span class="input-group-text" id="basic-addon1">Flat numbers</span>
+      <input type="number" class="form-control" placeholder="flat nmb" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="flatScale" />
+      <button class="btn btn-primary" (click)="calcDmg()">calc</button>
+    </div>
+  </div>
+  <div id="extraStats">
+    <h6>ДопСтаты</h6>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">ATK</span>
+      <input type="number" class="form-control" placeholder="extra atk" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraAtk" />
+      <span class="input-group-text" id="basic-addon1">HP</span>
+      <input type="number" class="form-control" placeholder="hp extra" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraHp" />
+      <span class="input-group-text" id="basic-addon1">DEF</span>
+      <input type="number" class="form-control" placeholder="def extra" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraDef" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">ATK%</span>
+      <input type="number" class="form-control" placeholder="atk extra %" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraAtkPercentage" />
+      <span class="input-group-text" id="basic-addon1">HP%</span>
+      <input type="number" class="form-control" placeholder="hp extra %" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraHpPercentage" />
+      <span class="input-group-text" id="basic-addon1">DEF%</span>
+      <input type="number" class="form-control" placeholder="def extra %" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraDefPercentage" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">critRate</span>
+      <input type="number" class="form-control" placeholder="critRate" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraCritRate" />
+      <span class="input-group-text" id="basic-addon1">critDmg</span>
+      <input type="number" class="form-control" placeholder="critDmg" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraCritDmg" />
+      <span class="input-group-text" id="basic-addon1">BonusDmg</span>
+      <input type="number" class="form-control" placeholder="BonusDmg" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="extraDmgBonus" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">defIgnore</span>
+      <input type="number" class="form-control" placeholder="defIgnore" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="armorPen" />
+      <span class="input-group-text" id="basic-addon1">defReduction</span>
+      <input type="number" class="form-control" placeholder="defReduction" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="armorIgnore" />
+      <span class="input-group-text" id="basic-addon1">ResPen</span>
+      <input type="number" class="form-control" placeholder="ResPen" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="resPen" />
+      <span class="input-group-text" id="basic-addon1">dmgTaken</span>
+      <input type="number" class="form-control" placeholder="dmgTaken" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="dmgTaken" />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">EnemyLvl</span>
+      <input type="number" class="form-control" placeholder="Lvl" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="enemyLvl" />
+      <span class="input-group-text" id="basic-addon1">enemyRes</span>
+      <input type="number" class="form-control" placeholder="enemtRes" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="enemtRes" />
+      <span class="input-group-text" id="basic-addon1">enemyToughness</span>
+      <input type="number" class="form-control" placeholder="enemtRes" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="enemyToughness" />
+      <span class="input-group-text" id="basic-addon1">enemyToughnessBroken</span>
+      <div class="input-group-text">
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" [(ngModel)]="enemyToughnessBroken" />
+      </div>
+    </div>
+  </div>
+</div>

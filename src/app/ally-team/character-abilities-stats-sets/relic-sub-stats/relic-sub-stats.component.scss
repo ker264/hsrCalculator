@@ -1,0 +1,21 @@
+#mainStat {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 25px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+tr {
+  td {
+    vertical-align: middle;
+  }
+}
+
+.fixedSs {
+  width: 75px;
+}

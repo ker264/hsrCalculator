@@ -36,6 +36,5 @@ export class AllyTeamComponent {
       return;
     }
     this.showStatsForPosition = position;
-    console.log(this.team[this.showStatsForPosition]);
   }
 }
