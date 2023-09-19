@@ -1,10 +1,11 @@
 import { allBaseStats, possibleClass, rarity } from "../dataBase/allCharsBaseStats";
 import { oneLcInterface } from "../dataBase/lightconesDataAllPrydwen";
 import { ArtifactSet } from "./artifact-set";
+import { possibleStats } from "./relic";
 
 export class AllyBaseStats {
   name: string = "";
-  lvl: number = possibleLevel.lvl_1_20;
+  lvl: number = possibleLevel.lvl_80;
 
   atk: number[] = [];
   hp: number[] = [];
@@ -26,6 +27,21 @@ export class AllyBaseStats {
   class = possibleClass.preservation;
 
   lightCone?: oneLcInterface;
+
+  atkIncFlat = 0;
+  atkIncPercentage = 0;
+  defIncFlat = 0;
+  defIncPercentage = 0;
+  hpIncFlat = 0;
+  hpIncPercentage = 0;
+  speedIncFlat = 0;
+  critRateIncFlat = 0;
+  critDmgIncFlat = 0;
+  breakEffectIncFlat = 0;
+  effectHitRateIncFlat = 0;
+  dmgBonusIncFlat = 0;
+
+  artifactSet: ArtifactSet = new ArtifactSet();
 
   /**
    *
@@ -53,7 +69,89 @@ export class AllyBaseStats {
     this.class = tmp.class;
   }
 
-  artifactSet: ArtifactSet[] = [];
+  calcInc() {
+    this.clearStatsInc();
+    this.artifactSet.getAsArray().forEach((relic) => {
+      if (relic.mainStat) {
+        this.calcOneStat({ name: relic.mainStat, value: relic.mainStatValue! });
+      }
+
+      relic.subStats.forEach((subStat) => {
+        if (subStat) {
+          this.calcOneStat(subStat);
+        }
+      });
+    });
+  }
+
+  private clearStatsInc() {
+    this.atkIncFlat = 0;
+    this.atkIncPercentage = 0;
+    this.defIncFlat = 0;
+    this.defIncPercentage = 0;
+    this.hpIncFlat = 0;
+    this.hpIncPercentage = 0;
+    this.speedIncFlat = 0;
+    this.critRateIncFlat = 0;
+    this.critDmgIncFlat = 0;
+    this.breakEffectIncFlat = 0;
+    this.effectHitRateIncFlat = 0;
+    this.dmgBonusIncFlat = 0;
+  }
+
+  private calcOneStat(stat: { name: string; value: number }) {
+    switch (stat.name) {
+      case possibleStats.atk:
+        this.atkIncFlat += stat.value;
+        break;
+      case possibleStats.hp:
+        this.hpIncFlat += stat.value;
+        break;
+      case possibleStats.def:
+        this.defIncFlat += stat.value;
+        break;
+      case possibleStats.atkPercentage:
+        this.atkIncPercentage += stat.value / 100;
+        break;
+      case possibleStats.hpPercentage:
+        this.hpIncPercentage += stat.value / 100;
+        break;
+      case possibleStats.defPercentage:
+        this.defIncPercentage += stat.value / 100;
+        break;
+      case possibleStats.critRate:
+        this.critRateIncFlat += stat.value / 100;
+        break;
+      case possibleStats.critDMG:
+        this.critDmgIncFlat += stat.value / 100;
+        break;
+      case possibleStats.dmgBonus:
+        this.dmgBonusIncFlat += stat.value / 100;
+        break;
+      case possibleStats.speed:
+        this.speedIncFlat += stat.value;
+        break;
+      case possibleStats.effectResistance:
+        ///////////////////////////////////////////////
+        break;
+      case possibleStats.hitRateEffectiveness:
+        this.effectHitRateIncFlat += stat.value / 100;
+        break;
+      case possibleStats.healingBonus:
+        // this.effectHitRateIncFlat += stat.value;
+        break;
+      case possibleStats.breakEffect:
+        this.breakEffectIncFlat += stat.value / 100;
+        break;
+      case possibleStats.energyRechargeRate:
+        // this.breakEffectIncFlat += stat.value;
+        break;
+
+      default:
+        alert("Непонятная собака при подсчете!");
+        break;
+    }
+  }
 }
 
 export enum possibleLevel {

@@ -9,9 +9,22 @@ import { CharacterAbilitiesStatsSetsComponent } from "./ally-team/character-abil
 import { FormsModule } from "@angular/forms";
 import { LcForPathPipe } from "../pipes/lc-for-path.pipe";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { RelicSubStatsComponent } from "./ally-team/character-abilities-stats-sets/relic-sub-stats/relic-sub-stats.component";
+import { TempLegComponent } from './temp-leg/temp-leg.component';
+import { DmgLogComponent } from './dmg-log/dmg-log.component';
 
 @NgModule({
-  declarations: [AppComponent, CharacterAbilitiesStatsSetsComponent, AllyTeamComponent, OneAllyInTeamComponent, HeroPickerComponent, LcForPathPipe],
+  declarations: [
+    AppComponent,
+    CharacterAbilitiesStatsSetsComponent,
+    AllyTeamComponent,
+    OneAllyInTeamComponent,
+    HeroPickerComponent,
+    LcForPathPipe,
+    RelicSubStatsComponent,
+    TempLegComponent,
+    DmgLogComponent,
+  ],
   imports: [BrowserModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

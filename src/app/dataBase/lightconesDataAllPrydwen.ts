@@ -7,6 +7,7 @@ export interface oneLcInterface {
   hp: number;
   atk: number;
   def: number;
+  refLvl?: number;
 }
 
 export const lcAllData: oneLcInterface[] = [

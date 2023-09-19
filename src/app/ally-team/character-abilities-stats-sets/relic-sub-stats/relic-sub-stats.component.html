@@ -1,0 +1,54 @@
+<div>
+  <div id="mainStat">
+    <div *ngIf="relicPart.possibleMainStat.length > 0; else oneStat">
+      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ relicPart.mainStat ?? "??" }}
+      </a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let item of relicPart.possibleMainStat">
+          <a class="dropdown-item" href="#" (click)="chooseMainStat(item)">{{ item }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="relicPart.mainStat">{{ relicPart.mainStatValue }}</div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">low</th>
+        <th scope="col">mid</th>
+        <th scope="col">high</th>
+        <th scope="col">fixed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subStat of relicPart.subStats; index as i">
+        <td>
+          <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="updatePossibleSubStats()">
+            {{ subStat ? subStat.name : "??" }}
+          </a>
+          <ul class="dropdown-menu">
+            <li *ngFor="let item of possibleSubStats">
+              <a class="dropdown-item" href="#" (click)="chooseSubStat(item.name, i)">{{ item.name }}</a>
+            </li>
+          </ul>
+        </td>
+        <td *ngIf="!subStat; else subStatRollsTablePart"></td>
+        <ng-template #subStatRollsTablePart>
+          <td>0 <i class="bi bi-caret-down-square-fill"></i><i class="bi bi-caret-up-square-fill"></i></td>
+          <td>0 <i class="bi bi-caret-down-square-fill"></i><i class="bi bi-caret-up-square-fill"></i></td>
+          <td>0 <i class="bi bi-caret-down-square-fill"></i><i class="bi bi-caret-up-square-fill"></i></td>
+          <td>
+            <input class="fixedSs" type="number" [(ngModel)]="subStat.value" (change)="calculateStats()" />
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #oneStat>
+  <div>{{ relicPart.mainStat }}:</div>
+</ng-template>
